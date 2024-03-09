@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-maven-app-service
+spec:
+  selector:
+    app: java-maven-app
+  type: LoadBalancer   # Cambiar a NodePort para accesibilidad local en Minikube
+  ports:
+  - port: 8090         # El nuevo puerto en el que el servicio estará escuchando
+    targetPort: 8090    # El puerto del contenedor al que se reenviarán las peticiones
+    nodePort: 31000     # Opcional: Puedes especificar un nodePort estático si se selecciona el tipo NodePort

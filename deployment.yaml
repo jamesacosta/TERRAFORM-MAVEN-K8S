@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-maven-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-maven-app
+  template:
+    metadata:
+      labels:
+        app: java-maven-app
+    spec:
+      containers:
+      - name: java-maven-app-container
+        image: maven-java-app   # Asegúrate de que la etiqueta de imagen corresponda a la que hayas construido
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8090   # El puerto en el que tu aplicación será accesible dentro del contenedor
